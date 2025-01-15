@@ -13,13 +13,11 @@ class SendTelegramNotificationJob implements ShouldQueue
     use Queueable, SerializesModels;
 
     protected $discussionTitle;
-    protected $authorName;
     protected $discussionId;
 
-    public function __construct(string $discussionTitle, string $authorName, int $discussionId)
+    public function __construct(string $discussionTitle, int $discussionId)
     {
         $this->discussionTitle = $discussionTitle;
-        $this->authorName = $authorName;
         $this->discussionId = $discussionId;
     }
 
@@ -33,9 +31,8 @@ class SendTelegramNotificationJob implements ShouldQueue
         }
 
         $message = sprintf(
-            "📢 新主题: %s\n作者: %s\n链接: %s",
+            "📢 %s\n %s",
             $this->discussionTitle,
-            $this->authorName,
             $app->url() . '/d/' . $this->discussionId
         );
 

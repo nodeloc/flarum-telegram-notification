@@ -21,7 +21,6 @@ class SendTelegramNotification
 
         $this->queue->push(new SendTelegramNotificationJob(
             $discussion->title,
-            $discussion->user->username,
             $discussion->id
         ));
     }
