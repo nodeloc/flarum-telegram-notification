@@ -12,5 +12,11 @@ app.initializers.add('nodeloc-telegram-notification', () => {
       setting: 'telegram.channel_id',
       label: 'Telegram Channel ID',
       type: 'text',
-    });
+    })
+    .registerSetting({
+    setting: 'telegram.excluded_tags',
+    label: 'Exclude tags',
+    help: 'Input exclude tabs：1,2,3',
+    type: 'text',
+  });
 });
