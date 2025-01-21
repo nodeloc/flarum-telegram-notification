@@ -15,8 +15,4 @@ return [
     new Extend\Locales(__DIR__.'/locale'),
     (new Extend\Event())
         ->listen(Started::class, Listeners\SendTelegramNotification::class),
-
-    (new Extend\Settings())
-        ->serializeToForum('telegramBotToken', 'telegram.bot_token')
-        ->serializeToForum('telegramChannelId', 'telegram.channel_id'),
 ];
